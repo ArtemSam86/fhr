@@ -1,0 +1,264 @@
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+
+  --bs-blue: #559bfb;
+  --bs-indigo: #2c3782;
+  --bs-purple: #816bff;
+  --bs-pink: #ff63a5;
+  --bs-red: #e85347;
+  --bs-orange: #ffa353;
+  --bs-yellow: #f4bd0e;
+  --bs-green: #1ee0ac;
+  --bs-teal: #20c997;
+  --bs-cyan: #09c2de;
+  --bs-white: #fff;
+  --bs-gray-dark: #2b3748;
+  --bs-gray-100: #ebeef2;
+  --bs-gray-200: #e5e9f2;
+  --bs-gray-300: #dbdfea;
+  --bs-gray-400: #b7c2d0;
+  --bs-gray-500: #8091a7;
+  --bs-gray-600: #3c4d62;
+  --bs-gray-700: #344357;
+  --bs-gray-800: #2b3748;
+  --bs-gray-900: #1f2b3a;
+  --bs-primary: #6576ff;
+  --bs-secondary: #364a63;
+  --bs-success: #1ee0ac;
+  --bs-info: #09c2de;
+  --bs-warning: #f4bd0e;
+  --bs-danger: #e85347;
+  --bs-light: #e5e9f2;
+  --bs-dark: #1f2b3a;
+  --bs-gray: #8091a7;
+  --bs-lighter: #f5f6fa;
+  --bs-primary-rgb: 101, 118, 255;
+  --bs-secondary-rgb: 54, 74, 99;
+  --bs-success-rgb: 30, 224, 172;
+  --bs-info-rgb: 9, 194, 222;
+  --bs-warning-rgb: 244, 189, 14;
+  --bs-danger-rgb: 232, 83, 71;
+  --bs-light-rgb: 229, 233, 242;
+  --bs-dark-rgb: 31, 43, 58;
+  --bs-gray-rgb: 128, 145, 167;
+  --bs-lighter-rgb: 245, 246, 250;
+  --bs-primary-text-emphasis: #223e64;
+  --bs-secondary-text-emphasis: #2b2f32;
+  --bs-success-text-emphasis: #0c5a45;
+  --bs-info-text-emphasis: #044e59;
+  --bs-warning-text-emphasis: #624c06;
+  --bs-danger-text-emphasis: #5d211c;
+  --bs-light-text-emphasis: #495057;
+  --bs-dark-text-emphasis: #495057;
+  --bs-primary-bg-subtle: #ddebfe;
+  --bs-secondary-bg-subtle: #e2e3e5;
+  --bs-success-bg-subtle: #d2f9ee;
+  --bs-info-bg-subtle: #cef3f8;
+  --bs-warning-bg-subtle: #fdf2cf;
+  --bs-danger-bg-subtle: #faddda;
+  --bs-light-bg-subtle: #fcfcfd;
+  --bs-dark-bg-subtle: #ced4da;
+  --bs-primary-border-subtle: #bbd7fd;
+  --bs-secondary-border-subtle: #c4c8cb;
+  --bs-success-border-subtle: #a5f3de;
+  --bs-info-border-subtle: #9de7f2;
+  --bs-warning-border-subtle: #fbe59f;
+  --bs-danger-border-subtle: #f6bab5;
+  --bs-light-border-subtle: #e9ecef;
+  --bs-dark-border-subtle: #adb5bd;
+  --bs-white-rgb: 255, 255, 255;
+  --bs-black-rgb: 0, 0, 0;
+  --bs-font-sans-serif: Roboto, sans-serif;
+  --bs-font-monospace:
+          SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New',
+          monospace;
+  --bs-gradient: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.15),
+          rgba(255, 255, 255, 0)
+  );
+  --bs-body-font-family: Roboto, sans-serif;
+  --bs-body-font-size: 0.875rem;
+  --bs-body-font-weight: 400;
+  --bs-body-line-height: 1.65;
+  --bs-body-color: #526484;
+  --bs-body-color-rgb: 82, 100, 132;
+  --bs-body-bg: #f5f6fa;
+  --bs-body-bg-rgb: 245, 246, 250;
+  --bs-emphasis-color: #000;
+  --bs-emphasis-color-rgb: 0, 0, 0;
+  --bs-secondary-color: rgba(82, 100, 132, 0.75);
+  --bs-secondary-color-rgb: 82, 100, 132;
+  --bs-secondary-bg: #e9ecef;
+  --bs-secondary-bg-rgb: 233, 236, 239;
+  --bs-tertiary-color: rgba(82, 100, 132, 0.5);
+  --bs-tertiary-color-rgb: 82, 100, 132;
+  --bs-tertiary-bg: #f8f9fa;
+  --bs-tertiary-bg-rgb: 248, 249, 250;
+  --bs-heading-color: #364a63;
+  --bs-link-color: #798bff;
+  --bs-link-color-rgb: 121, 139, 255;
+  --bs-link-decoration: none;
+  --bs-link-hover-color: #465fff;
+  --bs-link-hover-color-rgb: 70, 95, 255;
+  --bs-link-hover-decoration: none;
+  --bs-link-opacity: 1;
+  --bs-code-color: #ff63a5;
+  --bs-highlight-color: #526484;
+  --bs-highlight-bg: #fcf8e3;
+  --bs-border-width: 1px;
+  --bs-border-style: solid;
+  --bs-border-color: #dbdfea;
+  --bs-border-color-translucent: rgba(0, 0, 0, 0.175);
+  --bs-border-radius: 4px;
+  --bs-border-radius-sm: 3px;
+  --bs-border-radius-lg: 5px;
+  --bs-border-radius-xl: 8px;
+  --bs-border-radius-xxl: 12px;
+  --bs-border-radius-2xl: var(--bs-border-radius-xxl);
+  --bs-border-radius-pill: 50rem;
+  --bs-box-shadow: 0 3px 12px 1px rgba(43, 55, 72, 0.15);
+  --bs-box-shadow-sm: 0 0.125rem 0.25rem rgba(43, 55, 72, 0.15);
+  --bs-box-shadow-lg: 0 1rem 3rem rgba(43, 55, 72, 0.25);
+  --bs-box-shadow-inset: inset 0 1px 2px rgba(0, 0, 0, 0.075);
+  --bs-focus-ring-width: 0.25rem;
+  --bs-focus-ring-opacity: 0.25;
+  --bs-focus-ring-color: rgba(85, 155, 251, 0.25);
+  --bs-form-valid-color: #1ee0ac;
+  --bs-form-valid-border-color: #1ee0ac;
+  --bs-form-invalid-color: #e85347;
+  --bs-form-invalid-border-color: #e85347;
+  --bs-breakpoint-xs: 0;
+  --bs-breakpoint-sm: 576px;
+  --bs-breakpoint-md: 768px;
+  --bs-breakpoint-lg: 992px;
+  --bs-breakpoint-xl: 1200px;
+  --bs-breakpoint-xxl: 1540px;
+  --bs-carousel-indicator-active-bg: #fff;
+  --bs-carousel-caption-color: #fff;
+  --fc-daygrid-event-dot-width: 8px;
+  --fc-list-event-dot-width: 10px;
+  --fc-list-event-hover-bg-color: #f5f5f5;
+  --bs-bg-opacity: 1;
+  --bs-gutter-x: 14px;
+  --bs-gutter-y: 0;
+  --bs-card-spacer-y: 0.75rem;
+  --bs-card-spacer-x: 1.25rem;
+  --bs-card-title-spacer-y: 0.75rem;
+  --bs-card-border-width: 0;
+  --bs-card-border-color: rgba(0, 0, 0, 0.125);
+  --bs-card-border-radius: 4px;
+  --bs-card-inner-border-radius: 3px;
+  --bs-card-cap-padding-y: 0.75rem;
+  --bs-card-cap-padding-x: 1.25rem;
+  --bs-card-cap-bg: rgba(0, 0, 0, 0.07);
+  --bs-card-bg: #fff;
+  --bs-card-img-overlay-padding: 1.25rem;
+  --bs-card-group-margin: 14px;
+  --bs-accordion-color: var(--bs-body-color);
+  --bs-accordion-bg: #fff;
+  --bs-accordion-transition:
+          color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+          border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out,
+          border-radius 0.15s ease;
+  --bs-accordion-border-color: #dbdfea;
+  --bs-accordion-border-width: 1px;
+  --bs-accordion-border-radius: 4px;
+  --bs-accordion-inner-border-radius: 3px;
+  --bs-accordion-btn-padding-x: 1.25rem;
+  --bs-accordion-btn-padding-y: 1rem;
+  --bs-accordion-btn-color: var(--bs-body-color);
+  --bs-accordion-btn-bg: #fff;
+  --bs-accordion-btn-icon: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23526484' stroke-linecap='round' stroke-linejoin='round'%3e%3cpath d='m2 5 6 6 6-6'/%3e%3c/svg%3e");
+  --bs-accordion-btn-icon-width: 1.25rem;
+  --bs-accordion-btn-icon-transform: rotate(-180deg);
+  --bs-accordion-btn-icon-transition: transform 0.2s ease-in-out;
+  --bs-accordion-btn-active-icon: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23223e64' stroke-linecap='round' stroke-linejoin='round'%3e%3cpath d='m2 5 6 6 6-6'/%3e%3c/svg%3e");
+  --bs-accordion-btn-focus-box-shadow: 0 0 0 3px rgba(101, 118, 255, 0.1);
+  --bs-accordion-body-padding-x: 1.25rem;
+  --bs-accordion-body-padding-y: 1rem;
+  --bs-accordion-active-color: var(--bs-primary-text-emphasis);
+  --bs-accordion-active-bg: var(--bs-primary-bg-subtle);
+}
+
+*, ::after, ::before {
+  box-sizing: border-box;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+.card {
+  padding: 2em;
+}
+
+#app {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  width: calc(100% - 200px);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
