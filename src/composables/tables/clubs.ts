@@ -1,6 +1,6 @@
 import { GenerateTable, type ITableRow } from '@/shared/lib/table';
 import type { ITable } from '@/shared/lib/table';
-import { reactive, markRaw, type Reactive, ref, type Ref } from 'vue';
+import { computed, markRaw, ref, type Ref, type ComputedRef } from 'vue';
 import { useDynamicComponent } from '@/shared/utils/useDynamicComponent';
 import type { SortOrder } from '@/shared/types/common.ts';
 
@@ -62,12 +62,14 @@ const dataClubs: IClub[] = [
 
 export interface IUseTableClubs {
   clubs: Ref<IClub[]>;
-  clubsTable: Reactive<ITable>;
+  clubsTable: ComputedRef<ITable>;
   getClubs: () => Promise<void>;
   searchInTable: (query: string) => Promise<void>;
 }
 
 export const useTableClubs = (): IUseTableClubs => {
+  const clubs = ref<IClub[]>([]);
+
   // Components
   const onSortHandler = (p: SortOrder) => {
     console.log(p);
@@ -113,13 +115,11 @@ export const useTableClubs = (): IUseTableClubs => {
       }),
     };
   };
-  const bodyRows = dataClubs.map(mapClub);
-  const body = genTable.createBody(bodyRows);
+  const bodyRows = computed(() => clubs.value.map(mapClub));
+  const body = computed(() => genTable.createBody(bodyRows.value));
 
   // New
-  const clubs = ref<IClub[]>([]);
-  const newTable = genTable.createTable(header, body);
-  const clubsTable = reactive(newTable);
+  const clubsTable = computed(() => genTable.createTable(header, body.value));
 
   // Methods
   // TODO: Запросы будут выполняться через еще один слой абстракции. Сервисный слой с CRUD (src/services/index)

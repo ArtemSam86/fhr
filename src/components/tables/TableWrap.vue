@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, watch } from 'vue';
+import { onMounted, ref, watch } from 'vue';
 import { storeToRefs } from 'pinia';
 import { useTablesStore } from '@/stores/tables';
 import Search from '@/components/input/Search.vue';
@@ -10,6 +10,10 @@ const { clubsTable } = storeToRefs(tablesStore);
 
 const searchInput = ref('');
 watch(searchInput, tablesStore.searchInTable);
+
+onMounted(async () => {
+  await tablesStore.getClubs();
+});
 </script>
 
 <template>
