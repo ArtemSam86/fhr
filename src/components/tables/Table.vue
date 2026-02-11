@@ -7,7 +7,11 @@ const hasHTMLElement = (
   el: TdThComponent | HTMLElement | string | number | null | undefined
 ) => {
   if (!el) return false;
-  return !(typeof el === 'string' || typeof el === 'number' || el instanceof HTMLElement);
+  return !(
+    typeof el === 'string' ||
+    typeof el === 'number' ||
+    el instanceof HTMLElement
+  );
 };
 </script>
 
@@ -69,8 +73,6 @@ const hasHTMLElement = (
 
   tr {
     border-radius: 4px;
-    background-color: #d3cfcf;
-    border-color: #d3cfcf;
   }
 
   &__head {
@@ -81,6 +83,12 @@ const hasHTMLElement = (
   }
   &__body {
     &-tr {
+      background-color: #d3cfcf;
+      border-color: #d3cfcf;
+
+      &.active {
+        background-color: yellow;
+      }
     }
     &-td {
     }

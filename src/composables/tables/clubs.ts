@@ -61,8 +61,12 @@ export const useTableClubs = (): IUseTableClubs => {
 
   // Body
   const mapClub = (rawData: IClub): ITableRow => {
+    const numbers = clubs.value.map((club) => club.points);
+    const maxNumber = Math.max(...numbers);
+
     return {
       ...rawData,
+      ...(maxNumber === rawData.points && { cssClass: 'active' }),
       cells: Object.keys(rawData).map((k) => {
         if (k === 'logoUrl') {
           return genTable.createCell(
