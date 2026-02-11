@@ -1,64 +1,21 @@
-import { GenerateTable, type ITableRow } from '@/shared/lib/table';
-import type { ITable } from '@/shared/lib/table';
-import { computed, markRaw, ref, type Ref, type ComputedRef } from 'vue';
+/* Libs */
+import { computed, type ComputedRef, markRaw, type Ref, ref } from 'vue';
 import { useDynamicComponent } from '@/shared/utils/useDynamicComponent';
+import { TextColorFill } from '@/shared/lib/text-color-fill';
+
+/* Services */
+import services from '@/services';
+
+import type { ITable } from '@/shared/lib/table';
+/* Types */
+import { GenerateTable, type ITableRow } from '@/shared/lib/table';
 import type { SortOrder } from '@/shared/types/common.ts';
+import { type IClub, TableClubKeys } from '@/stores/tables/types.ts';
 
+/* Components */
 import TableThSort from '@/components/tables/cells/TableThSort.vue';
-import TableLogo from '@/components/tables/cells/TableTdLogo.vue';
-
-enum TableClubKeys {
-  Id = 'id',
-  Logo = 'logo',
-  Name = 'name',
-  City = 'city',
-  Points = 'points',
-}
-interface IClub extends Record<string, any> {
-  id: string;
-  logoUrl: string;
-  name: string;
-  city: string;
-  points: number;
-}
-
-const dataClubs: IClub[] = [
-  {
-    id: '1',
-    logoUrl: 'https://s3.fhmoscow.com/club/logo/40.png?v=1703856162',
-    name: 'ЦСКА',
-    city: 'Москва',
-    points: 50,
-  },
-  {
-    id: '2',
-    logoUrl: 'https://s3.fhmoscow.com/club/logo/24.png?v=1703805685',
-    name: 'Динамо',
-    city: 'Москва',
-    points: 35,
-  },
-  {
-    id: '3',
-    logoUrl: 'https://s3.fhmoscow.com/club/logo/64.png?v=1704115447',
-    name: 'Локомотив',
-    city: 'Ярославль',
-    points: 52,
-  },
-  {
-    id: '4',
-    logoUrl: 'https://s3.fhmoscow.com/club/logo/60.png?v=1704114624',
-    name: 'Спартак',
-    city: 'Москва',
-    points: 40,
-  },
-  {
-    id: '5',
-    logoUrl: 'https://s3.fhmoscow.com/club/logo/66337.png?v=1756887902',
-    name: 'Крылья-Советов',
-    city: 'Москва',
-    points: 25,
-  },
-];
+import TableTdLogo from '@/components/tables/cells/TableTdLogo.vue';
+import TableTdName from '@/components/tables/cells/TableTdName.vue';
 
 export interface IUseTableClubs {
   clubs: Ref<IClub[]>;
@@ -73,12 +30,20 @@ export const useTableClubs = (): IUseTableClubs => {
   // Components
   const onSortHandler = (p: SortOrder) => {
     console.log(p);
+    clubs.value = clubs.value.sort((a, b) => {
+      if (p === 'asc') return a.points < b.points ? -1 : 1;
+
+      return a.points > b.points ? -1 : 1;
+    });
     // TODO: Тут отправляем запрос на сервер для получения отсортированного списка и потом кладем его в таблицу
   };
   const useTableThSortPoints = useDynamicComponent({
     component: TableThSort,
     componentProps: () => ({ title: 'Очки', onSortHandler }),
   });
+
+  //
+  const textColorFill = new TextColorFill();
 
   // Generate table
   const genTable = new GenerateTable();
@@ -104,8 +69,20 @@ export const useTableClubs = (): IUseTableClubs => {
             k,
             markRaw(
               useDynamicComponent({
-                component: TableLogo,
+                component: TableTdLogo,
                 componentProps: () => ({ src: rawData[k] }),
+              })
+            )
+          );
+        }
+
+        if (k === 'name') {
+          return genTable.createCell(
+            k,
+            markRaw(
+              useDynamicComponent({
+                component: TableTdName,
+                componentProps: () => ({ name: rawData[k] }),
               })
             )
           );
@@ -124,10 +101,17 @@ export const useTableClubs = (): IUseTableClubs => {
   // Methods
   // TODO: Запросы будут выполняться через еще один слой абстракции. Сервисный слой с CRUD (src/services/index)
   const getClubs = async () => {
-    clubs.value = dataClubs;
+    const _clubs = await services.clubsService.fetchClubs();
+    clubs.value = _clubs.sort((a, b) => (a.points < b.points ? -1 : 1));
   };
+
   const searchInTable = async (query: string) => {
-    console.log(query);
+    clubs.value = clubs.value.map((club) => {
+      return {
+        ...club,
+        name: textColorFill.fill(club.name, query),
+      };
+    });
     // TODO: Тут отправляем запрос на сервер для получения отфильтрованного списка по поисковому слову и потом кладем его в таблицу
   };
 

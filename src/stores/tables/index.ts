@@ -1,12 +1,12 @@
 import { defineStore } from 'pinia';
-import type { IUseTableClubs } from '@/composables/tables/clubs';
-import { useTableClubs } from '@/composables/tables/clubs';
+import type { IUseTableClubs } from '@/composables/tables/clubs.ts';
+import { useTableClubs } from '@/composables/tables/clubs.ts';
 
 export interface IUseTablesStore extends IUseTableClubs {}
 
-const TABLES = 'tables';
+const Index = 'tables';
 
-export const useTablesStore = defineStore(TABLES, (): IUseTablesStore => {
+export const useTablesStore = defineStore(Index, (): IUseTablesStore => {
   return {
     ...useTableClubs(),
   };

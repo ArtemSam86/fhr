@@ -18,7 +18,7 @@ const mapSortOrder: Record<SortOrder, SortOrder> = {
   asc: 'desc',
   desc: 'asc',
 };
-const currentSortOrder = ref<SortOrder>('desc');
+const currentSortOrder = ref<SortOrder>('asc');
 const _onSortHandler = () => {
   currentSortOrder.value = mapSortOrder[currentSortOrder.value];
   if (onSortHandler) {

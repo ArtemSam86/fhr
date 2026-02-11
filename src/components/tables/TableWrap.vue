@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { onMounted, ref, watch } from 'vue';
 import { storeToRefs } from 'pinia';
-import { useTablesStore } from '@/stores/tables';
+import { useTablesStore } from '@/stores/tables/index.ts';
 import Search from '@/components/input/Search.vue';
 import Table from './Table.vue';
 
